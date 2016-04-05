@@ -22,33 +22,23 @@
 
 
 <body class="body-class" ng-app="app" ng-controller="MainCtrl">
-<div class="content">
-</div>
 
-<div id="bothboxes">
-  <form>
+  <form ng-submit = "getWalmartResults()">
   <h3>Search Item:</h3> <input id="inputbox" type="text" class="form-control" name="searchitem">
+<input id="button"  type="submit" class='btn btn-success' value="Submit">
 </form> 
 <br>
-<input id="button" type="submit" class='btn btn-success' value="Submit">
 
-<br><br>
+<br>
+HEre?
+<div ng-repeat	= "walmartItem in walmartItems">
+	Name: {{walmartItem.name}} <!-- <img src = {{walmartItem.imgUrl}}>    
+	Price: {{walmartItem.price}}
+	<a href={{walmartItem.addToCartUrl}}><button type='button' class='btn btn-primary'>Click here to Buy</button></a>
+-->
 </div>
-<p id="title">
-    
-</p>
-<p id="result">
-
-<br>
-</p>
-
-<br>
-<br>
 
 
-
-
-</div>
 </body>
 <script>
     
