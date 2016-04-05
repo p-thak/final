@@ -3,6 +3,7 @@ app.controller('MainCtrl', [
   '$scope','$http',
   function($scope,$http) {
 
+      $scope.walmartItems = [];
 
     $scope.getWalmartResults = function () {
          //var myCategory = document.getElementById("dropdown").value;
@@ -14,7 +15,6 @@ app.controller('MainCtrl', [
        //document.getElementById("result").innerHTML = ""
       console.log("Hello");
       
-      $scope.walmartItems = [];
       $.ajax({
         // console.log("Walmart");
         url: urls,
@@ -44,10 +44,10 @@ app.controller('MainCtrl', [
     )
      }
  angular.element(document).ready(function () {
-      return $http.get('/user').success(function(data){
-        $scope.user=data;
-        console.log($scope.user);
-      });
+      //return $http.get('/user').success(function(data){
+        //$scope.user=data;
+       // console.log($scope.user);
+     // });
     });
 
     }
