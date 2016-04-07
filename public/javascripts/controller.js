@@ -7,7 +7,10 @@ app.controller('MainCtrl', [
 
     $scope.getResults = function () {
          //var myCategory = document.getElementById("dropdown").value;
-	$scope.ebayShow();
+	document.getElementByClass("active") = function() {
+	console.log('here');
+}
+	//$scope.walmartShow();
         //$scope.walmartItems = [];
          //$scope.ebayItems = [];
        
@@ -94,18 +97,24 @@ app.controller('MainCtrl', [
     $scope.showModal2=false;
     $scope.showModal=true;
     $scope.showModal3=false;
+    $(".btn-group > .btn").removeClass("active");
+    $("#walmart").addClass("active");	
   }
 
   $scope.ebayShow= function() {
     $scope.showModal=false;
     $scope.showModal2=true;
     $scope.showModal3=false;
+	$(".btn-group > .btn").removeClass("active");
+    $("#ebay").addClass("active");
     }
 
   $scope.shopShow = function() {
     $scope.showModal3=true;
     $scope.showModal2=false;
     $scope.showModal=false;
+ 	$(".btn-group > .btn").removeClass("active");
+    $("#shop").addClass("active");
   }
 
   } 

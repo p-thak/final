@@ -25,6 +25,7 @@ img {
 */
 a {
   color: #00B7FF;
+  float: left;
 }
 
 .images {
@@ -77,14 +78,42 @@ a {
     color: Black;
   }
 
+.btn {
+ padding: 18px 28px;
+    font-size: 22px; //change this to your desired size
+    line-height: normal;
+    -webkit-border-radius: 8px;
+       -moz-border-radius: 8px;
+            border-radius: 8px;
+}
+
+.btn-group {
+    position: relative;
+    text-align: center;
+    margin: 0 auto;
+}
+
+.btn-group-wrap {
+    text-align: center;
+}
+
+div.btn-group {
+    margin: 0 auto; 
+    text-align: center;
+    width: inherit;
+    display: inline-block;
+}
 
 
 
+#toolbar {
+    width: 100%;
+    margin: 10px;
+    padding: 10px;
+}
 
-
-
-
-
+#toolbar .wrapper {
+}
 
 
 
