@@ -50,22 +50,39 @@
     </li>
   </ul>
   <h1>Ebay</h1>
+<ul class='Item-list' style="list-style: none">
+    <li class="item" ng-repeat="ebayItem in ebayItems">
+      <!--<p>{{ebayItem.Name}}</p> -->
+      <br>
+      <img ng-src="{{ebayItem.Pic}}" style="height:150px">
+      <br>
+        Price: {{ebayItem.Price}}
+        <br>
+        <a href={{ebayItem.addToCartUrl}}><button type='button' class='btn btn-primary'>Click here to Buy</button></a>
+    </li>
+  </ul>
+
+
+<!--
+
 <table>
-	<thead>
-		<tr>
-			<th>Pic</th>
-			<th>Name</th>
-			<th>Price</th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr ng-repeat="ebayItem in ebayItems">
-			<td><img ng-src="{{ebayItem.Pic}}" width="100px"></td>
-			<td>{{ebayItem.Name}}</td>
-			<td>{{ebayItem.Price}}</td>
-		</tr>
-	</tbody>
+        <thead>
+                <tr>
+                        <th>Pic</th>
+                        <th>Name</th>
+                        <th>Price</th>
+                </tr>
+        </thead>
+        <tbody>
+                <tr ng-repeat="ebayItem in ebayItems">
+                        <td><img ng-src="{{ebayItem.Pic}}" width="100px"></td>
+                        <td>{{ebayItem.Name}}</td>
+                        <td>{{ebayItem.Price}}</td>
+                </tr>
+        </tbody>
 </table>
+
+-->
 
 
 </body>
