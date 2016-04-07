@@ -30,7 +30,7 @@
     </div>
   </div>
 <div id="bothboxes" class="container">
-  <form ng-submit = "getWalmartResults()">
+  <form ng-submit = "getResults()">
   <h3>Search Item:</h3> <input id="inputbox" type="text" class="form-control" name="searchitem">
 <input id="button"  type="submit" class='btn btn-success' value="Submit">
 </form> 
@@ -49,6 +49,23 @@
 	<a href={{walmartItem.addToCartUrl}}><button type='button' class='btn btn-primary'>Click here to Buy</button></a>
     </li>
   </ul>
+  <h1>Ebay</h1>
+<table>
+	<thead>
+		<tr>
+			<th>Pic</th>
+			<th>Name</th>
+			<th>Price</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr ng-repeat="ebayItem in ebayItems">
+			<td><img ng-src="{{ebayItem.Pic}}" width="100px"></td>
+			<td>{{ebayItem.Name}}</td>
+			<td>{{ebayItem.Price}}</td>
+		</tr>
+	</tbody>
+</table>
 
 
 </body>
