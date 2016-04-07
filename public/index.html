@@ -22,7 +22,14 @@
 
 
 <body class="body-class" ng-app="app" ng-controller="MainCtrl">
+  <div class="container">
+    <div class="jumbotron">
+	<h1 class="text-center">What can you buy for $5?</h1>
+	<p class="text-left">Everyone likes spending money. Admit it, you do too. But sometimes it is hard to constantly buy big purchases which deplete your fundage quickly. This is why we are here. We want to help you find the best bargain deals on the internet that won't break your wallet. Come on and try it. Just search for something that you are interested at becoming the proud new owner of.</p>
 
+    </div>
+  </div>
+<div id="bothboxes" class="container">
   <form ng-submit = "getWalmartResults()">
   <h3>Search Item:</h3> <input id="inputbox" type="text" class="form-control" name="searchitem">
 <input id="button"  type="submit" class='btn btn-success' value="Submit">
@@ -30,13 +37,14 @@
 <br>
 
 <br>
-HEre?
-<div ng-repeat="walmartItem in walmartItems">
-      <h2>{{walmartItem.name}}</h2> <!-- <img src = {{walmartItem.imgUrl}}>    
+</div>
+  <ul class='Item-list' style="list-style: none">
+    <li class="item" ng-repeat="walmartItem in walmartItems">
+      <p>{{walmartItem.name}}</p> <img src = {{walmartItem.imgUrl}} style="height:150px">
 	Price: {{walmartItem.price}}
 	<a href={{walmartItem.addToCartUrl}}><button type='button' class='btn btn-primary'>Click here to Buy</button></a>
--->
-</div>
+    </li>
+  </ul>
 
 
 </body>
