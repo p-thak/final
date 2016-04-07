@@ -32,13 +32,18 @@
 <div id="bothboxes" class="container">
   <form ng-submit = "getResults()">
   <h3>Search Item:</h3> <input id="inputbox" type="text" class="form-control" name="searchitem">
-<input id="button"  type="submit" class='btn btn-success' value="Submit">
+<br>
+<input id="button"  type="submit"  class='btn btn-success' ng-click="walmartShow()" value="Submit">
 </form> 
 <br>
-
-<br>
+<div class="btn-group" data-toggle="buttons">
+  <input ng-click="walmartShow()" type="submit" class='btn btn-success active' value="Wal-mart" id="walmart"> 
+  <input ng-click="ebayShow()" type="submit" class='btn btn-success' value="Ebay" id="ebay">
+  <input ng-click="shopShow()" type="submit" class='btn btn-success' value="Shop.com" id="shop">
 </div>
-  <ul class='Item-list' style="list-style: none">
+<br>
+</div class='Item-list'>
+  <ul modal="showModal" ng-show = "showModal" style="list-style: none">
     <li class="item" ng-repeat="walmartItem in walmartItems">
       <!--<p>{{walmartItem.name}}</p> --> 
       <br>
@@ -49,8 +54,7 @@
 	<a href={{walmartItem.addToCartUrl}}><button type='button' class='btn btn-primary'>Click here to Buy</button></a>
     </li>
   </ul>
-  <h1>Ebay</h1>
-<ul class='Item-list' style="list-style: none">
+<ul modal="showModal2" ng-show="showModal2" style="list-style: none">
     <li class="item" ng-repeat="ebayItem in ebayItems">
       <!--<p>{{ebayItem.Name}}</p> -->
       <br>
@@ -58,7 +62,7 @@
       <br>
         Price: {{ebayItem.Price}}
         <br>
-        <a href={{ebayItem.addToCartUrl}}><button type='button' class='btn btn-primary'>Click here to Buy</button></a>
+        <a href={{ebayItem.URL}}><button type='button' class='btn btn-primary'>Click here to Buy</button></a>
     </li>
   </ul>
 

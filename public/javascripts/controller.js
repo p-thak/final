@@ -7,7 +7,7 @@ app.controller('MainCtrl', [
 
     $scope.getResults = function () {
          //var myCategory = document.getElementById("dropdown").value;
-
+	$scope.ebayShow();
         //$scope.walmartItems = [];
          //$scope.ebayItems = [];
        
@@ -44,6 +44,7 @@ app.controller('MainCtrl', [
              //console.log(value.parentItemId);
           });
 		console.log($scope.walmartItems); 
+		$scope.$apply();
           }
 
       }
@@ -68,14 +69,15 @@ app.controller('MainCtrl', [
               Name: ebayItem.title[0],
               Pic: ebayItem.galleryURL[0],
               View: ebayItem.viewItemURL,
-              Price: ebayItem.sellingStatus[0].currentPrice[0].__value__ 
+              Price: ebayItem.sellingStatus[0].currentPrice[0].__value__, 
+	      URL: ebayItem.viewItemURL[0]
           })
       })
       $scope.ebayItems = $scope.temp;
       console.log($scope.ebayItems);
       console.log("temp:" + $scope.temp);
 
-
+	$scope.$apply();
     }
   })
   event.preventDefault();
@@ -87,7 +89,26 @@ app.controller('MainCtrl', [
      // });
     });
 
+
+  $scope.walmartShow= function(){
+    $scope.showModal2=false;
+    $scope.showModal=true;
+    $scope.showModal3=false;
+  }
+
+  $scope.ebayShow= function() {
+    $scope.showModal=false;
+    $scope.showModal2=true;
+    $scope.showModal3=false;
     }
+
+  $scope.shopShow = function() {
+    $scope.showModal3=true;
+    $scope.showModal2=false;
+    $scope.showModal=false;
+  }
+
+  } 
 ]);
 
 
