@@ -5,7 +5,7 @@ app.controller('MainCtrl', [
 
       $scope.walmartItems = [];
 
-    $scope.getWalmartResults = function () {
+    $scope.getResults = function () {
          //var myCategory = document.getElementById("dropdown").value;
        
      var myQuery = document.getElementById("inputbox").value;
@@ -42,6 +42,37 @@ app.controller('MainCtrl', [
 
       }
     )
+            $.ajax({
+    type: "GET",
+    url: 'http://svcs.ebay.com/services/search/FindingService/v1?SECURITY-APPNAME=JacobWhi-CS201Fin-PRD-238c4f481-c3ec72bc&OPERATION-NAME=findItemsAdvanced&SERVICE-VERSION=1.0.0&RESPONSE-DATA-FORMAT=JSON&REST-PAYLOAD&keywords=' + myQuery + '&paginationInput.entriesPerPage=10&itemFilter(0).name=ListingType&itemFilter(0).value=FixedPrice&itemFilter(1).name=MinPrice&itemFilter(1).value=0&itemFilter(2).name=MaxPrice&itemFilter(2).value=5.00',
+    async: true, 
+    dataType: 'jsonp',
+    crossDomain:true,
+    success: function(data, status, xhr){
+      console.log("EBAY");
+      console.log(data);
+          $scope.ebayItems = data.findItemsAdvancedResponse[0].searchResult[0].item || [];
+      console.log($scope.ebayItems);
+      var html = [];
+      html.push('<table width="100%" border="0" cellspacing="0" cellpadding="3"><tbody>');
+
+      $scope.temp = [];
+      angular.forEach($scope.ebayItems, function(ebayItem, key){
+          $scope.temp.push({
+              Name: ebayItem.title[0],
+              Pic: ebayItem.galleryURL[0],
+              View: ebayItem.viewItemURL,
+              Price: ebayItem.sellingStatus[0].currentPrice[0].__value__ 
+          })
+      })
+      $scope.ebayItems = $scope.temp;
+      console.log($scope.ebayItems);
+      console.log("temp:" + $scope.temp);
+
+
+    }
+  })
+  event.preventDefault();
      }
  angular.element(document).ready(function () {
       //return $http.get('/user').success(function(data){
