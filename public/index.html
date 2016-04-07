@@ -40,8 +40,12 @@
 </div>
   <ul class='Item-list' style="list-style: none">
     <li class="item" ng-repeat="walmartItem in walmartItems">
-      <p>{{walmartItem.name}}</p> <img src = {{walmartItem.imgUrl}} style="height:150px">
+      <!--<p>{{walmartItem.name}}</p> --> 
+      <br>
+      <img src = {{walmartItem.imgUrl}} style="height:150px">
+      <br>
 	Price: {{walmartItem.price}}
+	<br>
 	<a href={{walmartItem.addToCartUrl}}><button type='button' class='btn btn-primary'>Click here to Buy</button></a>
     </li>
   </ul>
