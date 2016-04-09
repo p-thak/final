@@ -142,10 +142,6 @@ app.controller('MainCtrl', [
           console.log(url+queryParams);
         xhr.onreadystatechange = function () {
             if (this.readyState== 4) {
-                //console.log("Working");
-                //alert('Status: '+this.status+'\nHeaders: '+JSON.stringify(this.getAllResponseHeaders())+'\nBody: '+this.responseText);
-                
-                //var theJson = JSON.stringify(eval('('+this.responseText+')'));
                var theJson = JSON.parse(this.responseText);
 
                theJson.searchItems.forEach(function(item) {
@@ -156,10 +152,11 @@ app.controller('MainCtrl', [
                        console.log("the Low Price " + item.priceInfo.minPrice);
 
                         if(minPriceString.charAt(0)==='$') minPriceString= minPriceString.substr(1);  
+ 			minPriceString=minPriceString.replace (/,/g, "");
+			console.log('Before parse: '+minPriceString);
+                        console.log("after parse "+parseFloat(minPriceString));
 
-                        console.log(parseInt(minPriceString));
-
-                            if(parseInt(minPriceString) <=5) {
+                            if(parseFloat(minPriceString) <=5.00) {
                                 console.log("in loop");
                                   $scope.shopArray.push({
 
@@ -191,7 +188,7 @@ app.controller('MainCtrl', [
         xhr.send('');
 
 
-
+ $scope.apply();
   event.preventDefault();
 
      }

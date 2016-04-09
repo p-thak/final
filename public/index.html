@@ -31,7 +31,7 @@
   </div>
 <div id="bothboxes" class="container">
   <form ng-submit = "getResults()">
-  <h3>Search Item:</h3> <input id="inputbox" type="text" class="form-control" name="searchitem">
+  <h3>Search Item:</h3> <input id="inputbox" ng-model ='inputBox' ng-required ="!(inputBox.length)" type="text" class="form-control" name="searchitem">
 <br>
 <input id="button"  type="submit"  class='btn btn-success' ng-click="getResults()" value="Submit">
 </form> 
