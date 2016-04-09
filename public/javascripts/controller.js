@@ -129,7 +129,71 @@ app.controller('MainCtrl', [
 	$scope.$apply();
     }
   })
+
+//SHOP.COM API!!!!!!! =======================================
+  console.log("In SHOPPING API");
+        var xhr = new XMLHttpRequest();
+        var myQuery = document.getElementById("inputbox").value;
+	$scope.shopArray=[];
+        var url = 'https://api.shop.com/sites/v1/search/term/'+myQuery;
+      
+        var queryParams = '?' +  encodeURIComponent('apikey') + '=' + encodeURIComponent('l7xxa64b99fe16964c8fa9edf45efc08f072');
+        xhr.open('GET', url + queryParams);
+          console.log(url+queryParams);
+        xhr.onreadystatechange = function () {
+            if (this.readyState== 4) {
+                //console.log("Working");
+                //alert('Status: '+this.status+'\nHeaders: '+JSON.stringify(this.getAllResponseHeaders())+'\nBody: '+this.responseText);
+                
+                //var theJson = JSON.stringify(eval('('+this.responseText+')'));
+               var theJson = JSON.parse(this.responseText);
+
+               theJson.searchItems.forEach(function(item) {
+
+                        var minPriceString = item.priceInfo.minPrice;
+
+                    if(minPriceString != null){
+                       console.log("the Low Price " + item.priceInfo.minPrice);
+
+                        if(minPriceString.charAt(0)==='$') minPriceString= minPriceString.substr(1);  
+
+                        console.log(parseInt(minPriceString));
+
+                            if(parseInt(minPriceString) <=5) {
+                                console.log("in loop");
+                                  $scope.shopArray.push({
+
+                                    name: item.caption,
+                                    imgUrl: item.imageURI,
+                                    minPrice: item.priceInfo.minPrice,
+                                    priceRange:item.priceInfo.price,
+                                    addToCartUrl: item.modelQuickViewDetails.linkUrl
+
+                             });
+                          }
+                  }
+               
+               });
+
+                //console.log(theJson.searchItems);
+                //console.log(theJson.searchItems[0].caption);
+                //console.log(theJson.searchItems[0].imageURI);
+                //console.log(theJson.searchItems[0].priceInfo.price);
+                //console.log(theJson.searchItems[0].priceInfo.maxPrice);
+                //console.log(theJson.searchItems[0].priceInfo.minPrice);
+                //console.log(theJson.searchItems[0].modelQuickViewDetails.linkUrl);
+
+                     console.log($scope.shopArray);
+		     $scope.apply();
+            }
+        };
+        console.log($scope.shopArray);
+        xhr.send('');
+
+
+
   event.preventDefault();
+
      }
  angular.element(document).ready(function () {
       //return $http.get('/user').success(function(data){

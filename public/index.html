@@ -56,7 +56,7 @@
     <li class="item" ng-repeat="walmartItem in walmartItems">
       <!--<p>{{walmartItem.name}}</p> --> 
       <br>
-      <img src = {{walmartItem.imgUrl}} style="height:150px">
+      <img target="_blank" src = {{walmartItem.imgUrl}} style="height:150px">
       <br>
 	Price: {{walmartItem.price}}
 	<br>
@@ -67,11 +67,23 @@
     <li class="item" ng-repeat="ebayItem in ebayItems">
       <!--<p>{{ebayItem.Name}}</p> -->
       <br>
-      <img ng-src="{{ebayItem.Pic}}" style="height:150px">
+      <img target="_blank" ng-src="{{ebayItem.Pic}}" style="height:150px">
       <br>
         Price: {{ebayItem.Price}}
         <br>
         <a href={{ebayItem.URL}}><button type='button' class='btn btn-primary'>Click here to Buy</button></a>
+    </li>
+  </ul>
+
+<ul modal="showModal3" ng-show="showModal3" style="list-style: none">
+    <li class="item" ng-repeat="shopItem in shopArray">
+      <!--<p>{{ebayItem.Name}}</p> -->
+      <br>
+      <img target="_blank" ng-src="{{shopItem.imgUrl}}" style="height:150px">
+      <br>
+        Starting Price: {{shopItem.minPrice}}
+        <br>
+        <a href={{shopItem.addToCartUrl}}><button type='button' class='btn btn-primary'>Click here to Buy</button></a>
     </li>
   </ul>
 
