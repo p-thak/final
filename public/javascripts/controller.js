@@ -4,14 +4,40 @@ app.controller('MainCtrl', [
   function($scope,$http) {
 
       $scope.walmartItems = [];
-
     $scope.getResults = function () {
+
+	 $scope.walmartBool=true;
+        $scope.ebayBool=true;
+        $scope.shopBool=true;
          //var myCategory = document.getElementById("dropdown").value;
-	document.getElementByClass("active") = function() {
-	console.log('here');
-}
-	//$scope.walmartShow();
-        //$scope.walmartItems = [];
+	$scope.walmartItems = [];
+	$scope.ebayItems = [];
+	var cls = document.getElementsByClassName("active btn btn-success");
+	console.log(cls.length);
+	for (i=0; i<cls.length; i++) {
+		var id = cls[i].id;
+		console.log(id);
+		if (id === "walmart") {
+		  $scope.walmartShow();
+		} else if (id === "ebay") {
+                  $scope.ebayShow();
+		}
+	}
+	console.log($("#walmart.btn.btn-success.active.length"));
+
+        console.log($("#ebay.btn.btn-success.active.length"));
+/*
+	if (#walmart.btn.btn-success.active) {
+		$scope.walmartItems = [];
+	} else if (#ebay.btn.btn-success.active.length >0) {
+		$scope.ebayItems = [];
+	} else if (#shop.btn.btn-success.active.length >0) {
+		$scope.shopItems = [];
+	}
+*/
+	console.log($("#walmart.btn.btn-success.active"));
+	console.log($("#ebay .btn.btn-success.active"));
+//	 $scope.walmartItems = [];
          //$scope.ebayItems = [];
        
      var myQuery = document.getElementById("inputbox").value;
@@ -29,9 +55,25 @@ app.controller('MainCtrl', [
           success: function( data ){
             console.log("Hello from data");
             console.log(data);
+		console.log(data.numItems);
+		if (data.numItems ===0) {
+                   $scope.walmartBool = false;
+		   var cls = document.getElementsByClassName("active btn btn-success");
+        console.log(cls.length);
+        for (i=0; i<cls.length; i++) {
+                var id = cls[i].id;
+                console.log(id);
+                if (id === "walmart") {
+                  $scope.walmartShow();
+                } else if (id === "ebay") {
+                  $scope.ebayShow();
+                }
+        }
+
+                }
             $("#result")
             $scope.temp2 = [];
-          $.each(data['items'], function(name2, value)
+	$.each(data['items'], function(name2, value)
           {     
       
 		 $scope.temp2.push({
@@ -41,6 +83,7 @@ app.controller('MainCtrl', [
 			addToCartUrl: value.addToCartUrl
 
 		});
+	console.log("I AM TESTING HERE");
      $scope.walmartItems = $scope.temp2;
    
   //           $("#result").append("<div class='items'><strong>"+value.name+"</strong><br><img src="+value.largeImage+"><br>Price: <strong>$" + value.salePrice+"</strong> <p></p><a href="+value.addToCartUrl+"><button type='button' class='btn btn-primary'>Click here to Buy</button></a></div><br><br>");
@@ -61,11 +104,14 @@ app.controller('MainCtrl', [
     success: function(data, status, xhr){
       console.log("EBAY");
       console.log(data);
+
           $scope.ebayItems = data.findItemsAdvancedResponse[0].searchResult[0].item || [];
-      console.log($scope.ebayItems);
+      if ($scope.ebayItems ===0) {
+                   $scope.ebayBool = false;
+                }
+	console.log($scope.ebayItems);
       var html = [];
       html.push('<table width="100%" border="0" cellspacing="0" cellpadding="3"><tbody>');
-
       $scope.temp = [];
       angular.forEach($scope.ebayItems, function(ebayItem, key){
           $scope.temp.push({
@@ -94,27 +140,44 @@ app.controller('MainCtrl', [
 
 
   $scope.walmartShow= function(){
+	console.log($scope.walmartItems.length);
+	console.log("TEST LENGTH");
+	var i = $scope.walmartItems.length;
+	if (!$scope.walmartBool) {
+		console.log("ITS FALSE");
+		$scope.noModal=true;
+	} else $scope.noModal=false;
     $scope.showModal2=false;
     $scope.showModal=true;
     $scope.showModal3=false;
     $(".btn-group > .btn").removeClass("active");
     $("#walmart").addClass("active");	
+	
   }
 
   $scope.ebayShow= function() {
+	if (!$scope.ebayBool) {
+                $scope.noModal=true;
+        } else $scope.noModal=false;
     $scope.showModal=false;
     $scope.showModal2=true;
     $scope.showModal3=false;
 	$(".btn-group > .btn").removeClass("active");
     $("#ebay").addClass("active");
     }
-
+	
   $scope.shopShow = function() {
+	if (!$scope.shopBool) {
+                $scope.noModal=true;
+        } else $scope.noModal=false;
     $scope.showModal3=true;
     $scope.showModal2=false;
     $scope.showModal=false;
  	$(".btn-group > .btn").removeClass("active");
     $("#shop").addClass("active");
+  }
+  $scope.noShow = function() {
+    $scope.noModal=true;
   }
 
   } 

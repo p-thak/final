@@ -33,9 +33,14 @@
   <form ng-submit = "getResults()">
   <h3>Search Item:</h3> <input id="inputbox" type="text" class="form-control" name="searchitem">
 <br>
-<input id="button"  type="submit"  class='btn btn-success' ng-click="walmartShow()" value="Submit">
+<input id="button"  type="submit"  class='btn btn-success' ng-click="getResults()" value="Submit">
 </form> 
 <br>
+
+<div class="text-center" modal="noModal" ng-show="noModal">
+  <h2>You have expensive taste. Either choose a different store to search from or pick a different item to buy.</h2>
+</div>
+
 <div id='toolbar'>
   <div class='wrapper text-center'>
 <div class="btn-group" data-toggle="buttons">
@@ -69,7 +74,6 @@
         <a href={{ebayItem.URL}}><button type='button' class='btn btn-primary'>Click here to Buy</button></a>
     </li>
   </ul>
-
 
 <!--
 
