@@ -169,7 +169,11 @@ app.controller('MainCtrl', [
                              });
                           }
                   }
-               
+               if ($scope.shopArray.length ===0) {
+			console.log("SHOP FALSE");
+                   $scope.shopBool = false;
+                }
+
                });
 
                 //console.log(theJson.searchItems);
@@ -179,7 +183,10 @@ app.controller('MainCtrl', [
                 //console.log(theJson.searchItems[0].priceInfo.maxPrice);
                 //console.log(theJson.searchItems[0].priceInfo.minPrice);
                 //console.log(theJson.searchItems[0].modelQuickViewDetails.linkUrl);
-
+			if ($scope.shopArray.length ===0) {
+			console.log("SHOP FALSE");
+                   $scope.shopBool = false;
+                }
                      console.log($scope.shopArray);
 		     $scope.apply();
             }
