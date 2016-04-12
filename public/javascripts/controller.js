@@ -169,10 +169,6 @@ app.controller('MainCtrl', [
                              });
                           }
                   }
-               if ($scope.shopArray.length ===0) {
-			console.log("SHOP FALSE");
-                   $scope.shopBool = false;
-                }
 
                });
 
