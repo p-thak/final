@@ -53,7 +53,7 @@
 <br>
 </div class='Item-list'>
   <ul modal="showModal" ng-show = "showModal" style="list-style: none">
-    <li class="item" ng-repeat="walmartItem in walmartItems">
+    <li title="{{walmartItem.name}}" class="item" ng-repeat="walmartItem in walmartItems">
       <!--<p>{{walmartItem.name}}</p> --> 
       <br>
       <img target="_blank" src = {{walmartItem.imgUrl}} style="height:150px">
@@ -64,7 +64,7 @@
     </li>
   </ul>
 <ul modal="showModal2" ng-show="showModal2" style="list-style: none">
-    <li class="item" ng-repeat="ebayItem in ebayItems">
+    <li title="{{ebayItem.Name}}" class="item" ng-repeat="ebayItem in ebayItems">
       <!--<p>{{ebayItem.Name}}</p> -->
       <br>
       <img target="_blank" ng-src="{{ebayItem.Pic}}" style="height:150px">
@@ -76,7 +76,7 @@
   </ul>
 
 <ul modal="showModal3" ng-show="showModal3" style="list-style: none">
-    <li class="item" ng-repeat="shopItem in shopArray">
+    <li title="{{shopItem.name}}"class="item" ng-repeat="shopItem in shopArray">
       <!--<p>{{ebayItem.Name}}</p> -->
       <br>
       <img target="_blank" ng-src="{{shopItem.imgUrl}}" style="height:150px">
